@@ -22,24 +22,23 @@ const csv = require("csvtojson");
 const csvToJson = (csv) => {
   var lines = csv.split("\n");
 
-  console.log(lines);
-
   var result = [];
 
   var headers = lines[0].split(",");
 
   for (var i = 1; i < lines.length; i++) {
     var obj = {};
-    var currentline = lines[i].split(",");
+    // Replacing commas with a space after with a space so that I can split by comma
+    // Replacing all quotes because they're unnecessary and not consistent in the data
+    let currentLine = lines[i].replace(/\, /g, " ").replace(/\"/g, "");
+    let splitLine = currentLine.split(",");
 
     for (var j = 0; j < headers.length; j++) {
-      obj[headers[j]] = currentline[j];
+      obj[headers[j]] = splitLine[j];
     }
 
     result.push(obj);
   }
-
-  result.forEach((book) => console.log(book.Title));
 
   //return result; //JavaScript object
   console.log(JSON.stringify(result)); //JSON
