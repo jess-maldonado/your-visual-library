@@ -6,24 +6,9 @@ let files = {};
 
 const csv = require("csvtojson");
 
-// async storeFile = (files) => {
-//   // var form = new FormData();
-//   // form.append("name", "goodreads");
-//   // form.append("csv", files[0]);
-//   // console.log(form.getAll("csv"));
-
-//   async (files) => {
-//     const jsonObj = await csv().fromFile(files[0])
-//     console.log(jsonObj);
-//   }
-
-// };
-
 const csvToJson = (csv) => {
   var lines = csv.split("\n");
-
   var result = [];
-
   var headers = lines[0].split(",");
 
   for (var i = 1; i < lines.length; i++) {
@@ -36,10 +21,8 @@ const csvToJson = (csv) => {
     for (var j = 0; j < headers.length; j++) {
       obj[headers[j]] = splitLine[j];
     }
-
     result.push(obj);
   }
-
   //return result; //JavaScript object
   console.log(JSON.stringify(result)); //JSON
 };
