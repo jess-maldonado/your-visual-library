@@ -1,5 +1,62 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import { FilePicker } from "evergreen-ui";
+
+let files = {};
+
+const csv = require("csvtojson");
+
+// async storeFile = (files) => {
+//   // var form = new FormData();
+//   // form.append("name", "goodreads");
+//   // form.append("csv", files[0]);
+//   // console.log(form.getAll("csv"));
+
+//   async (files) => {
+//     const jsonObj = await csv().fromFile(files[0])
+//     console.log(jsonObj);
+//   }
+
+// };
+
+const csvToJson = (csv) => {
+  var lines = csv.split("\n");
+
+  console.log(lines);
+
+  var result = [];
+
+  var headers = lines[0].split(",");
+
+  for (var i = 1; i < lines.length; i++) {
+    var obj = {};
+    var currentline = lines[i].split(",");
+
+    for (var j = 0; j < headers.length; j++) {
+      obj[headers[j]] = currentline[j];
+    }
+
+    result.push(obj);
+  }
+
+  result.forEach((book) => console.log(book.Title));
+
+  //return result; //JavaScript object
+  console.log(JSON.stringify(result)); //JSON
+};
+
+const readFiles = (files) => {
+  var reader = new FileReader();
+  reader.onload = function () {
+    // Display CSV file contents
+    csvToJson(reader.result);
+  };
+  reader.onerror = () => {
+    console.log(reader.error);
+  };
+
+  reader.readAsText(files[0]);
+};
 
 export default function Home() {
   return (
@@ -15,9 +72,19 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
+
+        <FilePicker
+          name="goodreads_library"
+          capture
+          accept="text/csv"
+          width={250}
+          marginBottom={32}
+          onChange={(files) => readFiles(files)}
+          placeholder="Select the file here!"
+        />
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
@@ -56,10 +123,10 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
     </div>
-  )
+  );
 }
