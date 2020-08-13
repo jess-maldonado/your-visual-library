@@ -3,7 +3,7 @@ import { Pane } from "evergreen-ui";
 
 const Charts = ({ children }) => {
   return (
-    <Pane height={100} width="80%" background="black">
+    <Pane height={500} width="80%" display="flex" flexWrap="right-to-left">
       {children}
     </Pane>
   );

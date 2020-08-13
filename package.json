@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@nivo/bar": "^0.62.0",
+    "@nivo/line": "^0.62.0",
     "csvtojson": "^2.0.10",
     "evergreen-ui": "^5.0.4",
     "next": "9.5.2",
