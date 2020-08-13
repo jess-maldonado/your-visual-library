@@ -14,10 +14,9 @@ const setFullData = (state, action) => {
 };
 
 const setChartData = (state, action) => {
-  const chartMap = newChartData(state.fullData);
   return {
     ...state,
-    chartData: chartMap,
+    chartData: action.chartData,
   };
 };
 
