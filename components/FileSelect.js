@@ -1,5 +1,5 @@
 import { FilePicker, Pane, Button } from "evergreen-ui";
-import { connect, useDispatch, useStore, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../store/actions";
 
 const csv = require("csvtojson");
@@ -9,7 +9,7 @@ const FileSelect = (props) => {
   const fullData = useSelector((state) => state.fullData);
 
   return (
-    <Pane>
+    <Pane display="flex" flexDirection="column" alignItems="center">
       <FilePicker
         name="goodreads_library"
         capture
@@ -20,7 +20,7 @@ const FileSelect = (props) => {
         placeholder="Select the file here!"
       />
       <Button onClick={() => dispatch(actions.setChartData(fullData))}>
-        Click
+        Update Charts
       </Button>
     </Pane>
   );

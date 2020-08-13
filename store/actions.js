@@ -8,7 +8,6 @@ export const parseCSV = (file) => {
   return function (dispatch) {
     reader.onload = function () {
       const json = csvToObjects(reader.result);
-      console.log(json);
       dispatch(setFullData(csvToObjects(reader.result)));
     };
     reader.onerror = () => {
@@ -33,12 +32,10 @@ export const setChartData = (data) => {
     }
   }
 
-  console.log(authorData);
+  let authors = Array.from(authorData.keys());
 
-  Object.keys(authorData).forEach((key) => {
-    console.log(key);
+  authors.forEach((key) => {
     let obj = { author: key, books: authorData.get(key) };
-    console.log(obj);
     authorChart.push(obj);
   });
 
