@@ -3,10 +3,9 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
 let chartData = new Map();
-chartData.set("authors", [
-  { author: "JK Rowling", books: 10 },
-  { author: "Jim Butcher", books: 28 },
-]);
+chartData.set("authors", [{ author: "", books: 0 }]);
+chartData.set("totalBooks", 0);
+chartData.set("totalAuthors", 0);
 
 const initialState = {
   fullData: {},
