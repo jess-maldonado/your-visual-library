@@ -17,31 +17,65 @@ export const parseCSV = (file) => {
 };
 
 export const setChartData = (data) => {
-  let authorData = new Map();
-  let authorChart = [];
+  let totalBooksByAuthor = new Map();
+  let uniqueBooksByAuthor = new Map();
+  let authorSet = new Set();
+  let totalBooks = 0;
+  let booksByAuthorChart = [];
+  let longestBook = { NumberofPages: 0 };
+  let oldestBook = { OriginalPublicationYear: 3000 };
   let chartData = new Map();
 
   for (let i = 0; i < data.length; i++) {
-    if (!authorData.get(data[i].Author)) {
-      authorData.set(data[i].Author, Number(data[i].ReadCount));
+    // Setting total book & total author count
+    if (data[i].ReadCount > 0) {
+      totalBooks = totalBooks + 1;
+      authorSet.add(data[i].Author);
+      if (Number(data[i].NumberofPages) > longestBook.NumberofPages) {
+        longestBook = data[i];
+      }
+      if (
+        Number(data[i].OriginalPublicationYear) <
+          oldestBook.OriginalPublicationYear &&
+        Number(data[i].OriginalPublicationYear > 0)
+      ) {
+        oldestBook = data[i];
+      }
+    }
+
+    // Creating data for books by author bar chart
+    if (!totalBooksByAuthor.get(data[i].Author) && data[i].BookId !== "") {
+      totalBooksByAuthor.set(data[i].Author, Number(data[i].ReadCount));
+      uniqueBooksByAuthor.set(data[i].Author, 1);
     } else {
-      authorData.set(
+      totalBooksByAuthor.set(
         data[i].Author,
-        authorData.get(data[i].Author) + Number(data[i].ReadCount)
+        totalBooksByAuthor.get(data[i].Author) + Number(data[i].ReadCount)
+      );
+      uniqueBooksByAuthor.set(
+        data[i].Author,
+        uniqueBooksByAuthor.get(data[i].Author) + 1
       );
     }
   }
-
-  let authors = Array.from(authorData.keys());
-
+  let authors = Array.from(totalBooksByAuthor.keys());
   authors.forEach((key) => {
-    let obj = { author: key, books: authorData.get(key) };
-    authorChart.push(obj);
+    let obj = {
+      author: key,
+      totalBooks: totalBooksByAuthor.get(key),
+      uniqueBooks: uniqueBooksByAuthor.get(key),
+    };
+    booksByAuthorChart.push(obj);
   });
 
-  chartData.set("authors", authorChart);
-  console.log(chartData);
+  // Setting the map for all chart data
+  chartData.set("authors", booksByAuthorChart);
 
+  chartData.set("totalBooks", totalBooks);
+  chartData.set("totalAuthors", authorSet.size);
+  chartData.set("longestBook", longestBook);
+  chartData.set("oldestBook", oldestBook);
+  console.log(chartData);
   return {
     type: actions.SET_CHART_DATA,
     data: chartData,
