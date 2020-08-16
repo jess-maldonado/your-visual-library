@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import Head from "next/head";
 import AuthorBar from "../components/Charts/AuthorBar";
 import Totals from "../components/Charts/Totals";
+import LongestBook from "../components/KPICards/LongestBook";
 
 const Layout = () => {
   const chartData = useSelector((state) => state.chartData);
@@ -31,11 +32,8 @@ const Layout = () => {
           books={chartData.get("totalBooks")}
           authors={chartData.get("totalAuthors")}
         />
-        <AuthorBar
-          data={chartData
-            .get("authors")
-            .sort((a, b) => (a.books < b.books ? 1 : -1))}
-        />
+        <AuthorBar data={chartData.get("authors")} sort="uniqueBooks" />
+        <LongestBook />
       </Charts>
     </Pane>
   );

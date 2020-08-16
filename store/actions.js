@@ -17,10 +17,12 @@ export const parseCSV = (file) => {
 };
 
 export const setChartData = (data) => {
-  let authorData = new Map();
+  let totalBooksByAuthor = new Map();
+  let uniqueBooksByAuthor = new Map();
   let authorSet = new Set();
   let totalBooks = 0;
-  let authorChart = [];
+  let booksByAuthorChart = [];
+  let longestBook = {};
   let chartData = new Map();
 
   for (let i = 0; i < data.length; i++) {
@@ -31,23 +33,33 @@ export const setChartData = (data) => {
     }
 
     // Creating data for books by author bar chart
-    if (!authorData.get(data[i].Author)) {
-      authorData.set(data[i].Author, Number(data[i].ReadCount));
+    if (!totalBooksByAuthor.get(data[i].Author) && data[i].BookId !== "") {
+      totalBooksByAuthor.set(data[i].Author, Number(data[i].ReadCount));
+      uniqueBooksByAuthor.set(data[i].Author, 1);
     } else {
-      authorData.set(
+      totalBooksByAuthor.set(
         data[i].Author,
-        authorData.get(data[i].Author) + Number(data[i].ReadCount)
+        totalBooksByAuthor.get(data[i].Author) + Number(data[i].ReadCount)
+      );
+      uniqueBooksByAuthor.set(
+        data[i].Author,
+        uniqueBooksByAuthor.get(data[i].Author) + 1
       );
     }
   }
-  let authors = Array.from(authorData.keys());
+  let authors = Array.from(totalBooksByAuthor.keys());
   authors.forEach((key) => {
-    let obj = { author: key, books: authorData.get(key) };
-    authorChart.push(obj);
+    let obj = {
+      author: key,
+      totalBooks: totalBooksByAuthor.get(key),
+      uniqueBooks: uniqueBooksByAuthor.get(key),
+    };
+    booksByAuthorChart.push(obj);
   });
 
   // Setting the map for all chart data
-  chartData.set("authors", authorChart);
+  chartData.set("authors", booksByAuthorChart);
+
   chartData.set("totalBooks", totalBooks);
   chartData.set("totalAuthors", authorSet.size);
   console.log(chartData);
