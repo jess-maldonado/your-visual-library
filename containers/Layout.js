@@ -1,19 +1,12 @@
 import React from "react";
-import { Pane, Heading, withTheme } from "evergreen-ui";
-import FileSelect from "../components/FileSelect";
+import { Pane, withTheme } from "evergreen-ui";
 import Charts from "./Charts";
 import Header from "../components/Header";
 import Years from "../components/Years";
-import { ResponsiveBar } from "@nivo/bar";
-import { useSelector } from "react-redux";
+
 import Head from "next/head";
-import AuthorBar from "../components/Charts/AuthorBar";
-import Totals from "../components/Charts/Totals";
-import LongestBook from "../components/KPICards/LongestBook";
 
 const Layout = () => {
-  const chartData = useSelector((state) => state.chartData);
-
   return (
     <Pane
       display="flex"
@@ -27,14 +20,7 @@ const Layout = () => {
       </Head>
       <Header />
       <Years years={["All", "2020", "2019", "2018"]} />
-      <Charts justifySelf="center">
-        <Totals
-          books={chartData.get("totalBooks")}
-          authors={chartData.get("totalAuthors")}
-        />
-        <AuthorBar data={chartData.get("authors")} sort="uniqueBooks" />
-        <LongestBook />
-      </Charts>
+      <Charts justifySelf="center"></Charts>
     </Pane>
   );
 };

@@ -12,6 +12,7 @@ const Header = () => {
       justifyContent="center"
       alignItems="center"
       flexDirection="column"
+      padding={50}
     >
       <Heading size={700} color="white">
         LIBRARY STATS

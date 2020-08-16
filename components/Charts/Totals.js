@@ -7,8 +7,8 @@ const Totals = (props) => {
 
   if (props.books > 0) {
     data = (
-      <Heading size={400} textTransform="uppercase">
-        Great job! You read
+      <Heading size={500} textTransform="uppercase">
+        Great job! You've read
         <Text size={600}> {props.books} </Text>books by
         <Text size={600}> {props.authors}</Text> authors!
       </Heading>

@@ -22,7 +22,8 @@ export const setChartData = (data) => {
   let authorSet = new Set();
   let totalBooks = 0;
   let booksByAuthorChart = [];
-  let longestBook = {};
+  let longestBook = { NumberofPages: 0 };
+  let oldestBook = { OriginalPublicationYear: 3000 };
   let chartData = new Map();
 
   for (let i = 0; i < data.length; i++) {
@@ -30,6 +31,16 @@ export const setChartData = (data) => {
     if (data[i].ReadCount > 0) {
       totalBooks = totalBooks + 1;
       authorSet.add(data[i].Author);
+      if (Number(data[i].NumberofPages) > longestBook.NumberofPages) {
+        longestBook = data[i];
+      }
+      if (
+        Number(data[i].OriginalPublicationYear) <
+          oldestBook.OriginalPublicationYear &&
+        Number(data[i].OriginalPublicationYear > 0)
+      ) {
+        oldestBook = data[i];
+      }
     }
 
     // Creating data for books by author bar chart
@@ -62,6 +73,8 @@ export const setChartData = (data) => {
 
   chartData.set("totalBooks", totalBooks);
   chartData.set("totalAuthors", authorSet.size);
+  chartData.set("longestBook", longestBook);
+  chartData.set("oldestBook", oldestBook);
   console.log(chartData);
   return {
     type: actions.SET_CHART_DATA,
