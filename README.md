@@ -1,8 +1,8 @@
-This is a Next.js app that will (eventually) allow you to upload your Goodreads library and see cool charts about your reading history.
+This is a Next.js app that will allows you to upload your Goodreads library and see cool charts about your reading history.
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+It is currently a WIP, but I will be regularly adding new charts and stats.
 
-## Getting Started
+## Running locally
 
 First, run the development server:
 
@@ -12,4 +12,8 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser.
+
+## Getting your Goodreads data
+
+Log in to Goodreads, and go to [My Books > Import/Export](https://www.goodreads.com/review/import). Click `Export Library`. The file that downloads can be used in this app!
