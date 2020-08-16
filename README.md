@@ -4,7 +4,7 @@ It is currently a WIP, but I will be regularly adding new charts and stats.
 
 ## Running locally
 
-First, run the development server:
+After clone this repo locally, run the development server:
 
 ```bash
 npm run dev
