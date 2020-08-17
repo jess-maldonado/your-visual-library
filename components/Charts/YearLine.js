@@ -88,12 +88,7 @@ const YearLine = (props) => {
           bookYear.sort((a, b) => (a > b ? 1 : -1));
 
           return (
-            <Pane
-              background="white"
-              border="1 px solid black"
-              padding={15}
-              elevation={3}
-            >
+            <Pane background="white" padding={15} elevation={3}>
               <Heading>Published in {point.data.x}</Heading>
               <ul>
                 {bookYear.map((book) => (
