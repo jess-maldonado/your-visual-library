@@ -24,7 +24,13 @@ const AuthorBar = (props) => {
   sortData(data, sortBy);
 
   return (
-    <Pane marginTop={30} flex={2} background="white" elevation={2} padding={10}>
+    <Pane
+      marginTop={30}
+      width="60%"
+      background="white"
+      elevation={2}
+      padding={10}
+    >
       <Heading size={700}>Top Authors By...</Heading>
       <Tablist paddingTop={20}>
         {["Total books", "Unique books"].map((val, index) => (
