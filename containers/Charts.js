@@ -4,12 +4,12 @@ import AuthorBar from "../components/Charts/AuthorBar";
 import Totals from "../components/Charts/Totals";
 import BookStats from "../components/KPICards/BookStats";
 import { useSelector } from "react-redux";
+import YearLine from "../components/Charts/YearLine";
 
 const Charts = ({ children }) => {
   const chartData = useSelector((state) => state.chartData);
   const oldestBook = chartData.get("oldestBook");
   const longestBook = chartData.get("longestBook");
-  console.log(oldestBook);
 
   if (oldestBook) {
     return (
@@ -45,6 +45,7 @@ const Charts = ({ children }) => {
             />
           </Pane>
         </Pane>
+        <YearLine data={chartData.get("filteredBooks")} />
       </Pane>
     );
   }

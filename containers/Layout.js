@@ -19,7 +19,7 @@ const Layout = () => {
         <title>Library Stats</title>
       </Head>
       <Header />
-      <Years years={["All", "2020", "2019", "2018"]} />
+      {/* <Years years={["All", "2020", "2019", "2018"]} /> */}
       <Charts justifySelf="center"></Charts>
     </Pane>
   );
