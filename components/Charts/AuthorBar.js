@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { ResponsiveBar } from "@nivo/bar";
-import { Tab, Tablist, Pane, Heading } from "evergreen-ui";
+import { Tab, Tablist, Pane, Heading, Paragraph } from "evergreen-ui";
 
 const AuthorBar = (props) => {
-  const [sortBy, setSortBy] = useState("Total books");
+  const [sortBy, setSortBy] = useState("Unique books");
 
-  const sort = sortBy === "Total books" ? "totalBooks" : "uniqueBooks";
+  const sort = sortBy === "Total reads" ? "totalBooks" : "uniqueBooks";
 
   console.log(sortBy);
 
   const data = [...props.data];
   const sortData = (data, sortKey) => {
     switch (sortKey) {
-      case "Total books":
+      case "Total reads":
         data.sort((a, b) => (a.totalBooks < b.totalBooks ? 1 : -1));
         break;
       case "Unique books":
@@ -33,7 +33,7 @@ const AuthorBar = (props) => {
     >
       <Heading size={700}>Top Authors By...</Heading>
       <Tablist paddingTop={20}>
-        {["Total books", "Unique books"].map((val, index) => (
+        {["Unique books", "Total reads"].map((val, index) => (
           <Tab
             key={val}
             id={val}
@@ -61,6 +61,14 @@ const AuthorBar = (props) => {
         axisLeft={{
           legendOffset: -100,
           tickSize: 0,
+        }}
+        tooltip={({ data }) => {
+          return (
+            <Paragraph padding={15}>
+              You've read {data.uniqueBooks} books by {data.author}, a total of{" "}
+              {data.totalBooks} times.
+            </Paragraph>
+          );
         }}
       />
     </Pane>
