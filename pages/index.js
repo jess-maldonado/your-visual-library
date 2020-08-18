@@ -12,8 +12,8 @@ const Home = (props) => {
       justifyContent="center"
     >
       <Pane
-        width="60%"
-        height="60%"
+        width="55%"
+        height="45%"
         background="white"
         border
         elevation={4}
@@ -23,11 +23,11 @@ const Home = (props) => {
         padding={40}
         justifyContent="flex-start"
       >
-        <Heading size={900}>VizLib</Heading>
-        <Heading size={600} padding={10}>
-          Visualize your Goodreads library
+        <Heading size={900} padding={10} textAlign="center">
+          Your Visual Library
         </Heading>
-        <Paragraph size={500}>
+        <Heading size={400}>Visualize your Goodreads Library</Heading>
+        <Paragraph size={500} paddingTop={25}>
           Welcome fellow bookworm! You've spent years tracking your reading on
           Goodreads, and now you can see it come to life. Simply{" "}
           <Link
@@ -37,10 +37,10 @@ const Home = (props) => {
           >
             export your library
           </Link>{" "}
-          and upload the file below.{" "}
+          and upload the file below. This app works best in a desktop browser.
         </Paragraph>
 
-        <Paragraph size={400} marginTop={20}>
+        <Paragraph size={400} marginTop={20} marginBottom={20}>
           <strong>
             This web app is completely browser-based, so none of your data will
             be stored.
