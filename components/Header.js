@@ -22,7 +22,7 @@ const Header = () => {
         textShadow="3px 3px 10px rgba(0, 0, 0, 1)"
         color="white"
       >
-        Visualize your Goodreads Library
+        Your Visual Library
       </Heading>
       <FileSelect buttonText="Update charts" />
     </Pane>

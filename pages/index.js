@@ -24,8 +24,9 @@ const Home = (props) => {
         justifyContent="flex-start"
       >
         <Heading size={900} padding={10} textAlign="center">
-          Visualize your Goodreads Library
+          Your Visual Library
         </Heading>
+        <Heading size={400}>Visualize your Goodreads Library</Heading>
         <Paragraph size={500} paddingTop={25}>
           Welcome fellow bookworm! You've spent years tracking your reading on
           Goodreads, and now you can see it come to life. Simply{" "}
