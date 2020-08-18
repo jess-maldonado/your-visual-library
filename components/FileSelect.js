@@ -1,3 +1,5 @@
+import React from "react";
+import Link from "next/link";
 import { FilePicker, Pane, Button } from "evergreen-ui";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../store/actions";
@@ -19,9 +21,12 @@ const FileSelect = (props) => {
         onChange={(file) => dispatch(actions.parseCSV(file))}
         placeholder="Select the file here!"
       />
-      <Button onClick={() => dispatch(actions.setChartData(fullData))}>
-        Update Charts
-      </Button>
+
+      <Link href="/Charts">
+        <Button onClick={() => dispatch(actions.setChartData(fullData))}>
+          {props.buttonText}
+        </Button>
+      </Link>
     </Pane>
   );
 };
