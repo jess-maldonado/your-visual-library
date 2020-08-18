@@ -17,10 +17,14 @@ const Header = () => {
       className={styles.bookImage}
       elevation={2}
     >
-      {/* <Heading size={700} color="white">
+      <Heading
+        size={600}
+        textShadow="3px 3px 10px rgba(0, 0, 0, 1)"
+        color="white"
+      >
         Visualize your Goodreads Library
-      </Heading> */}
-      <FileSelect margin={20} buttonText="Update charts" />
+      </Heading>
+      <FileSelect buttonText="Update charts" />
     </Pane>
   );
 };
