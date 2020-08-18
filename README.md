@@ -1,4 +1,4 @@
-This is a Next.js app that will allows you to upload your Goodreads library and see cool charts about your reading history.
+This is a Next.js app that allows you to upload your Goodreads library and see cool charts about your reading history.
 
 It is currently a WIP, but I will be regularly adding new charts and stats.
 

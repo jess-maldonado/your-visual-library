@@ -3,7 +3,7 @@ import { Pane, Heading, Paragraph, Link } from "evergreen-ui";
 import styles from "../styles/Intro.module.css";
 import FileSelect from "../components/FileSelect";
 
-const Home = (props) => {
+const Intro = (props) => {
   return (
     <Pane
       className={styles.background}
@@ -17,11 +17,11 @@ const Home = (props) => {
         background="white"
         border
         elevation={4}
-        display="flex"
+        //display="flex"
         flexDirection="column"
         alignItems="center"
-        padding={20}
         justifyContent="flex-start"
+        padding={4}
       >
         <Heading size={900}>VizLib</Heading>
         <Heading size={600} padding={10}>
@@ -39,11 +39,10 @@ const Home = (props) => {
           </Link>{" "}
           and upload the file below.{" "}
         </Paragraph>
-
         <Paragraph size={400} marginTop={20}>
           <strong>
             This web app is completely browser-based, so none of your data will
-            be stored.
+            be stored. Don't worry!
           </strong>
         </Paragraph>
         <FileSelect buttonText="Build my charts!" />
@@ -52,4 +51,4 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+export default Intro;
