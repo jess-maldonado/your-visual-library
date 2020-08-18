@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <Pane
       width="100%"
-      height={150}
+      height={175}
       backgroundColor="teal"
       display="flex"
       justifyContent="center"
@@ -18,7 +18,7 @@ const Header = () => {
       elevation={2}
     >
       <Heading
-        size={600}
+        size={700}
         textShadow="3px 3px 10px rgba(0, 0, 0, 1)"
         color="white"
       >
