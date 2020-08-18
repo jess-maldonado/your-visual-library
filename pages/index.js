@@ -20,18 +20,18 @@ const Home = (props) => {
         display="flex"
         flexDirection="column"
         alignItems="center"
-        padding={40}
+        padding={30}
         justifyContent="flex-start"
       >
         <Heading size={900} padding={10} textAlign="center">
           Your Visual Library
         </Heading>
-        <Heading size={400}>Visualize your Goodreads Library</Heading>
-        <Paragraph size={500} paddingTop={25}>
+        <Heading size={100}>Visualize your Goodreads Library</Heading>
+        <Paragraph size={400} paddingTop={25}>
           Welcome fellow bookworm! You've spent years tracking your reading on
           Goodreads, and now you can see it come to life. Simply{" "}
           <Link
-            size={500}
+            size={400}
             href="https://www.goodreads.com/review/import"
             target="_"
           >
@@ -40,7 +40,7 @@ const Home = (props) => {
           and upload the file below. This app works best in a desktop browser.
         </Paragraph>
 
-        <Paragraph size={400} marginTop={20} marginBottom={20}>
+        <Paragraph size={300} marginTop={20} marginBottom={20}>
           <strong>
             This web app is completely browser-based, so none of your data will
             be stored.
