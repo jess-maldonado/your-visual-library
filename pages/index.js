@@ -20,7 +20,7 @@ const Home = (props) => {
         display="flex"
         flexDirection="column"
         alignItems="center"
-        padding={20}
+        padding={40}
         justifyContent="flex-start"
       >
         <Heading size={900}>VizLib</Heading>
