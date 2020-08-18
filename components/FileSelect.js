@@ -22,7 +22,7 @@ const FileSelect = (props) => {
         placeholder="Select the file here!"
       />
 
-      <Link href="/Charts">
+      <Link href="/charts">
         <Button onClick={() => dispatch(actions.setChartData(fullData))}>
           {props.buttonText}
         </Button>

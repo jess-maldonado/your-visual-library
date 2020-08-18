@@ -3,7 +3,7 @@ import { Pane, Heading, Paragraph, Link } from "evergreen-ui";
 import styles from "../styles/Intro.module.css";
 import FileSelect from "../components/FileSelect";
 
-const Intro = (props) => {
+const Home = (props) => {
   return (
     <Pane
       className={styles.background}
@@ -52,4 +52,4 @@ const Intro = (props) => {
   );
 };
 
-export default Intro;
+export default Home;
